@@ -6,7 +6,6 @@
 <title>Group 8 Website</title>
 
 <style>
-/* ===== BACKGROUND ===== */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -15,7 +14,7 @@ body {
     overflow: hidden;
 }
 
-/* ===== LANDING OVERLAY ===== */
+/* LANDING */
 #landing {
     position: fixed;
     width: 100%;
@@ -26,7 +25,7 @@ body {
     align-items: center;
 }
 
-/* ===== GREETING CARD ===== */
+/* CARD */
 .card {
     width: 380px;
     padding: 25px;
@@ -34,19 +33,6 @@ body {
     background: linear-gradient(135deg, #ffd1dc, #ffe5b4);
     text-align: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-/* BIGGER GROUP PHOTO */
-.group-photo {
-    width: 260px;
-    max-width: 90%;
-    border-radius: 15px;
-    margin: 12px 0;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.card h1 {
-    margin-bottom: 10px;
 }
 
 .card button {
@@ -60,14 +46,14 @@ body {
     font-weight: bold;
 }
 
-/* ===== MAIN PAGE ===== */
+/* MAIN */
 #main {
     display: none;
     height: 100vh;
     display: flex;
 }
 
-/* ===== SIDEBAR ===== */
+/* SIDEBAR */
 .sidebar {
     width: 30%;
     background: rgba(0,0,0,0.6);
@@ -100,7 +86,7 @@ body {
     object-fit: cover;
 }
 
-/* ===== CONTENT ===== */
+/* CONTENT */
 .content {
     width: 70%;
     padding: 30px;
@@ -108,15 +94,15 @@ body {
     overflow-y: auto;
 }
 
-/* ===== PROFILE ===== */
+/* PROFILE LAYOUT UPDATED */
 .profile {
     text-align: center;
     padding: 20px;
 }
 
-/* MUCH BIGGER PROFILE IMAGE */
+/* IMAGE ON TOP BIG */
 .profile img {
-    width: 380px;
+    width: 360px;
     max-width: 95%;
     border-radius: 25px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
@@ -125,35 +111,35 @@ body {
 .profile h2 {
     font-size: 30px;
     margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.profile .info {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ===== LANDING PAGE ===== -->
+<!-- LANDING -->
 <div id="landing">
     <div class="card">
-        <h2>Welcome to Group 8 Website</h2>
-        <p>Hello! We are Group 8 👋</p>
-
-        <!-- GROUP PHOTO -->
-        <img src="group.jpg" class="group-photo">
-
-        <button onclick="enterSite()">View Members Introduction</button>
+        <h2>Hello! Welcome to Group 8 Website</h2>
+        <button onclick="enterSite()">View Members’ Details</button>
     </div>
 </div>
 
-<!-- ===== MAIN WEBSITE ===== -->
+<!-- MAIN -->
 <div id="main">
 
     <!-- SIDEBAR -->
     <div class="sidebar">
         <h3>Menu</h3>
 
-        <div class="menu-item" onclick="showAbout()">
-            About Us
-        </div>
+        <div class="menu-item" onclick="showAbout()">About Us</div>
 
         <h3>Members</h3>
 
@@ -162,15 +148,15 @@ body {
         </div>
 
         <div class="menu-item" onclick="showMember('armel')">
-            <img src="armel.jpg"> Armel Jade Tolentino
-        </div>
-
-        <div class="menu-item" onclick="showMember('ronaldo')">
-            <img src="ronaldo.jpg"> Ronaldo Linganay
+            <img src="armel.jpg"> Armel Tolentino
         </div>
 
         <div class="menu-item" onclick="showMember('jhamela')">
             <img src="jhamela.jpg"> Jhamela Pevidal
+        </div>
+
+        <div class="menu-item" onclick="showMember('ronaldo')">
+            <img src="ronaldo.jpg"> Ronaldo Linganay
         </div>
     </div>
 
@@ -187,55 +173,41 @@ function enterSite() {
     document.getElementById("main").style.display = "flex";
 }
 
-/* ABOUT US */
 function showAbout() {
     document.getElementById("content").innerHTML = `
         <h1>About Us</h1>
-
-        <img src="group.jpg" style="width:320px; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.3);">
-
-        <p><i>(Replace image above with your group photo file name)</i></p>
-
-        <p>
-        We are Group 8, committed to learning, teamwork, and creativity.
-        Through collaboration, we aim to produce meaningful and inspiring outputs.
-        </p>
-
+        <p>We are Group 8, working together with teamwork, dedication, and creativity to build meaningful outputs in our academic journey.</p>
         <h3>"Alone we can do so little; together we can do so much."</h3>
     `;
 }
 
-/* MEMBERS */
+/* UPDATED MEMBERS DATA */
 function showMember(name) {
 
     let data = {
         rea: {
             img: "rea.jpg",
             name: "Rea May Reyes",
-            age: "Age: __",
-            address: "Address: __",
-            msg: "Keep going, your effort matters."
+            info: "22 years old • Lives in Pateros",
+            msg: "A dedicated and hardworking student who always strives to do her best in every task. She believes that consistency and effort lead to success, no matter how small the steps may be."
         },
         armel: {
             img: "armel.jpg",
-            name: "Armel Jade Tolentino",
-            age: "Age: __",
-            address: "Address: __",
-            msg: "Work hard in silence, let success speak."
-        },
-        ronaldo: {
-            img: "ronaldo.jpg",
-            name: "Ronaldo Linganay",
-            age: "Age: __",
-            address: "Address: __",
-            msg: "Stay humble and keep improving."
+            name: "Armel Tolentino",
+            info: "20 years old • Lives in Taguig",
+            msg: "A passionate learner who values growth and teamwork. He always believes that challenges are opportunities to improve and become better every day."
         },
         jhamela: {
             img: "jhamela.jpg",
             name: "Jhamela Pevidal",
-            age: "Age: __",
-            address: "Address: __",
-            msg: "Believe in your journey."
+            info: "19 years old • Lives in Taguig",
+            msg: "An optimistic and determined student who always brings positivity to the group. She believes that hard work and patience will always lead to success."
+        },
+        ronaldo: {
+            img: "ronaldo.jpg",
+            name: "Ronaldo Linganay",
+            info: "20 years old • Lives in Taguig",
+            msg: "A focused and responsible member who values discipline and effort. He believes that staying consistent and humble is the key to long-term achievement."
         }
     };
 
@@ -243,11 +215,19 @@ function showMember(name) {
 
     document.getElementById("content").innerHTML = `
         <div class="profile">
+
+            <!-- IMAGE ON TOP -->
             <img src="${m.img}">
+
+            <!-- NAME -->
             <h2>${m.name}</h2>
-            <p>${m.age}</p>
-            <p>${m.address}</p>
-            <p><i>${m.msg}</i></p>
+
+            <!-- AGE + LOCATION IN ONE LINE -->
+            <div class="info">${m.info}</div>
+
+            <!-- LONG MESSAGE -->
+            <p>${m.msg}</p>
+
         </div>
     `;
 }
