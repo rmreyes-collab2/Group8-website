@@ -28,12 +28,21 @@ body {
 
 /* ===== GREETING CARD ===== */
 .card {
-    width: 350px;
+    width: 380px;
     padding: 25px;
     border-radius: 20px;
     background: linear-gradient(135deg, #ffd1dc, #ffe5b4);
     text-align: center;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* BIGGER GROUP PHOTO */
+.group-photo {
+    width: 260px;
+    max-width: 90%;
+    border-radius: 15px;
+    margin: 12px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .card h1 {
@@ -64,6 +73,7 @@ body {
     background: rgba(0,0,0,0.6);
     color: white;
     padding: 20px;
+    overflow-y: auto;
 }
 
 .sidebar h3 {
@@ -73,41 +83,48 @@ body {
 
 .menu-item {
     cursor: pointer;
-    margin: 10px 0;
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .menu-item:hover {
     color: #ffb6c1;
 }
 
+.menu-item img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 /* ===== CONTENT ===== */
 .content {
     width: 70%;
     padding: 30px;
-    background: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.85);
     overflow-y: auto;
 }
 
-/* MEMBER LIST */
-.member {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    margin: 10px 0;
+/* ===== PROFILE ===== */
+.profile {
+    text-align: center;
+    padding: 20px;
 }
 
-.member img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-    object-fit: cover;
-}
-
-/* BIG PROFILE */
+/* MUCH BIGGER PROFILE IMAGE */
 .profile img {
-    width: 200px;
-    border-radius: 20px;
+    width: 380px;
+    max-width: 95%;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.profile h2 {
+    font-size: 30px;
+    margin-top: 15px;
 }
 </style>
 </head>
@@ -120,10 +137,8 @@ body {
         <h2>Welcome to Group 8 Website</h2>
         <p>Hello! We are Group 8 👋</p>
 
-        <!-- PLACEHOLDER FOR GROUP PHOTO -->
-        <div style="margin:10px 0;">
-            <img src="group.jpg" width="120" style="border-radius:10px;">
-        </div>
+        <!-- GROUP PHOTO -->
+        <img src="group.jpg" class="group-photo">
 
         <button onclick="enterSite()">View Members Introduction</button>
     </div>
@@ -136,28 +151,30 @@ body {
     <div class="sidebar">
         <h3>Menu</h3>
 
-        <div class="menu-item" onclick="showAbout()">About Us</div>
+        <div class="menu-item" onclick="showAbout()">
+            About Us
+        </div>
 
         <h3>Members</h3>
 
         <div class="menu-item" onclick="showMember('rea')">
-            Rea May Reyes <img src="rea.jpg" width="25">
+            <img src="rea.jpg"> Rea May Reyes
         </div>
 
         <div class="menu-item" onclick="showMember('armel')">
-            Armel Jade Tolentino <img src="armel.jpg" width="25">
+            <img src="armel.jpg"> Armel Jade Tolentino
         </div>
 
         <div class="menu-item" onclick="showMember('ronaldo')">
-            Ronaldo Linganay <img src="ronaldo.jpg" width="25">
+            <img src="ronaldo.jpg"> Ronaldo Linganay
         </div>
 
         <div class="menu-item" onclick="showMember('jhamela')">
-            Jhamela Pevidal <img src="jhamela.jpg" width="25">
+            <img src="jhamela.jpg"> Jhamela Pevidal
         </div>
     </div>
 
-    <!-- CONTENT AREA -->
+    <!-- CONTENT -->
     <div class="content" id="content">
         <h2>Click a menu on the left</h2>
     </div>
@@ -170,27 +187,25 @@ function enterSite() {
     document.getElementById("main").style.display = "flex";
 }
 
-/* ===== ABOUT US ===== */
+/* ABOUT US */
 function showAbout() {
     document.getElementById("content").innerHTML = `
         <h1>About Us</h1>
 
-        <!-- GROUP PHOTO PLACEHOLDER -->
-        <img src="group.jpg" width="300" style="border-radius:15px;">
+        <img src="group.jpg" style="width:320px; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.3);">
 
-        <p><i>(Replace image above with your group photo file)</i></p>
+        <p><i>(Replace image above with your group photo file name)</i></p>
 
         <p>
-        We are Group 8, united by collaboration, creativity, and determination.
-        Our goal is to build meaningful projects that inspire others and showcase
-        our skills in web development.
+        We are Group 8, committed to learning, teamwork, and creativity.
+        Through collaboration, we aim to produce meaningful and inspiring outputs.
         </p>
 
-        <p><b>"Success is best achieved when we work together."</b></p>
+        <h3>"Alone we can do so little; together we can do so much."</h3>
     `;
 }
 
-/* ===== MEMBERS ===== */
+/* MEMBERS */
 function showMember(name) {
 
     let data = {
@@ -199,28 +214,28 @@ function showMember(name) {
             name: "Rea May Reyes",
             age: "Age: __",
             address: "Address: __",
-            msg: "Keep going no matter how slow progress is."
+            msg: "Keep going, your effort matters."
         },
         armel: {
             img: "armel.jpg",
             name: "Armel Jade Tolentino",
             age: "Age: __",
             address: "Address: __",
-            msg: "Your effort today builds your future."
+            msg: "Work hard in silence, let success speak."
         },
         ronaldo: {
             img: "ronaldo.jpg",
             name: "Ronaldo Linganay",
             age: "Age: __",
             address: "Address: __",
-            msg: "Stay humble and work hard."
+            msg: "Stay humble and keep improving."
         },
         jhamela: {
             img: "jhamela.jpg",
             name: "Jhamela Pevidal",
             age: "Age: __",
             address: "Address: __",
-            msg: "Believe in yourself always."
+            msg: "Believe in your journey."
         }
     };
 
