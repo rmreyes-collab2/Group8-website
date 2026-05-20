@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Group 8 Website</title>
+
+<style>
+/* ===== BACKGROUND ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url("bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+}
+
+/* ===== LANDING OVERLAY ===== */
+#landing {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== GREETING CARD ===== */
+.card {
+    width: 350px;
+    padding: 25px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #ffd1dc, #ffe5b4);
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card h1 {
+    margin-bottom: 10px;
+}
+
+.card button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #ff8fab;
+    color: white;
+    font-weight: bold;
+}
+
+/* ===== MAIN PAGE ===== */
+#main {
+    display: none;
+    height: 100vh;
+    display: flex;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width: 30%;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 20px;
+}
+
+.sidebar h3 {
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+}
+
+.menu-item {
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.menu-item:hover {
+    color: #ffb6c1;
+}
+
+/* ===== CONTENT ===== */
+.content {
+    width: 70%;
+    padding: 30px;
+    background: rgba(255,255,255,0.8);
+    overflow-y: auto;
+}
+
+/* MEMBER LIST */
+.member {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.member img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+/* BIG PROFILE */
+.profile img {
+    width: 200px;
+    border-radius: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== LANDING PAGE ===== -->
+<div id="landing">
+    <div class="card">
+        <h2>Welcome to Group 8 Website</h2>
+        <p>Hello! We are Group 8 👋</p>
+
+        <!-- PLACEHOLDER FOR GROUP PHOTO -->
+        <div style="margin:10px 0;">
+            <img src="group.jpg" width="120" style="border-radius:10px;">
+        </div>
+
+        <button onclick="enterSite()">View Members Introduction</button>
+    </div>
+</div>
+
+<!-- ===== MAIN WEBSITE ===== -->
+<div id="main">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h3>Menu</h3>
+
+        <div class="menu-item" onclick="showAbout()">About Us</div>
+
+        <h3>Members</h3>
+
+        <div class="menu-item" onclick="showMember('rea')">
+            Rea May Reyes <img src="rea.jpg" width="25">
+        </div>
+
+        <div class="menu-item" onclick="showMember('armel')">
+            Armel Jade Tolentino <img src="armel.jpg" width="25">
+        </div>
+
+        <div class="menu-item" onclick="showMember('ronaldo')">
+            Ronaldo Linganay <img src="ronaldo.jpg" width="25">
+        </div>
+
+        <div class="menu-item" onclick="showMember('jhamela')">
+            Jhamela Pevidal <img src="jhamela.jpg" width="25">
+        </div>
+    </div>
+
+    <!-- CONTENT AREA -->
+    <div class="content" id="content">
+        <h2>Click a menu on the left</h2>
+    </div>
+
+</div>
+
+<script>
+function enterSite() {
+    document.getElementById("landing").style.display = "none";
+    document.getElementById("main").style.display = "flex";
+}
+
+/* ===== ABOUT US ===== */
+function showAbout() {
+    document.getElementById("content").innerHTML = `
+        <h1>About Us</h1>
+
+        <!-- GROUP PHOTO PLACEHOLDER -->
+        <img src="group.jpg" width="300" style="border-radius:15px;">
+
+        <p><i>(Replace image above with your group photo file)</i></p>
+
+        <p>
+        We are Group 8, united by collaboration, creativity, and determination.
+        Our goal is to build meaningful projects that inspire others and showcase
+        our skills in web development.
+        </p>
+
+        <p><b>"Success is best achieved when we work together."</b></p>
+    `;
+}
+
+/* ===== MEMBERS ===== */
+function showMember(name) {
+
+    let data = {
+        rea: {
+            img: "rea.jpg",
+            name: "Rea May Reyes",
+            age: "Age: __",
+            address: "Address: __",
+            msg: "Keep going no matter how slow progress is."
+        },
+        armel: {
+            img: "armel.jpg",
+            name: "Armel Jade Tolentino",
+            age: "Age: __",
+            address: "Address: __",
+            msg: "Your effort today builds your future."
+        },
+        ronaldo: {
+            img: "ronaldo.jpg",
+            name: "Ronaldo Linganay",
+            age: "Age: __",
+            address: "Address: __",
+            msg: "Stay humble and work hard."
+        },
+        jhamela: {
+            img: "jhamela.jpg",
+            name: "Jhamela Pevidal",
+            age: "Age: __",
+            address: "Address: __",
+            msg: "Believe in yourself always."
+        }
+    };
+
+    let m = data[name];
+
+    document.getElementById("content").innerHTML = `
+        <div class="profile">
+            <img src="${m.img}">
+            <h2>${m.name}</h2>
+            <p>${m.age}</p>
+            <p>${m.address}</p>
+            <p><i>${m.msg}</i></p>
+        </div>
+    `;
+}
+</script>
+
+</body>
+</html>
